@@ -98,3 +98,8 @@ print(first, second, rest)
 
 
 
+it = iter(range(1, 3))
+first, second = it
+print(f'{first} and {second}')
+
+
