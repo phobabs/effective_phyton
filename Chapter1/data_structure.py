@@ -1,26 +1,30 @@
 # slicing
 
 a = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-print('Middle two:  ', a[3:5])
-print('All but ends:', a[1:7])
+print('Middle two:  ', a[3:5])  # Slicing to get elements from index 3 to 4
+print('All but ends:', a[1:7])  # Slicing to get elements from index 1 to 6
 
-#common Python trick for reversing a byte string is to slice the string with a stride of -1:
+# common Python trick for reversing a byte string is to slice the string with a stride of -1:
 x = b'mongoose' 
-y = x[::-1]
+y = x[::-1]  # Reversing the byte string
 print(y) 
 b'esoognom'
-#This also works correctly for Unicode strings (see Item 3: “Know the Differences Between bytes and str”):
+# This also works correctly for Unicode strings (see Item 3: “Know the Differences Between bytes and str”):
 x = ''
 y = x[::-1] 
 print(y)
 
+# Slicing with a stride
+x = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+print(x[2::2])  # Slicing to get every second element starting from index 2
+print(x[2:2:-2]) # Slicing to get every second element starting from index 2 in reverse order
+# Prefer Catch-All Unpacking Over Slicing
 
-#Prefer Catch-All Unpacking Over Slicing
-
+# Item 13: Prefer Catch-All Unpacking Over Slicing
 car_ages = [0, 9, 4, 8, 7, 20, 19, 1, 6, 15]
 car_ages_descending = sorted(car_ages, reverse=True)
 print(car_ages_descending)
-oldest, second_oldest,*others = car_ages_descending
+oldest, second_oldest, *others = car_ages_descending
 print(oldest, second_oldest, *others)
 
 
@@ -94,12 +98,26 @@ car_inventory = {
 # empty
 short_list = [1, 2]
 first, second, *rest = short_list
-print(first, second, rest)
+#print(first, second, rest)
 
 
 
 it = iter(range(1, 3))
 first, second = it
 print(f'{first} and {second}')
+
+# unpacking iterator
+
+def generate_csv():
+    yield ('Date', 'Make', 'Model', 'Year', 'Price')
+    yield ('2020-11-01', 'Toyota', 'Corolla', 2016, 24000)
+    yield ('2020-11-02', 'Ford', 'Fusion', 2018, 33000)
+    yield ('2020-11-03', 'Chevrolet', 'Volt', 2014, 14000)
+
+all_csv_rows = list(generate_csv())
+header, *rows = all_csv_rows[0], all_csv_rows[1:]
+print(all_csv_rows)
+#print('CSV Header:', header)
+#print('CSV Row:', rows)   
 
 
