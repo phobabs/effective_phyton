@@ -6,10 +6,15 @@ def generate_csv():
 
 all_csv_rows = list(generate_csv())
 header, *rows = all_csv_rows[0], all_csv_rows[1:]
-print(all_csv_rows)
+#print(all_csv_rows)
 #print('CSV Header:', header)
 #print('CSV Row:', rows) 
 
 # sort the list of tuples by the price
 #rows.sort(key=lambda row: row[-1])
 #print(rows)
+
+it = list(generate_csv())
+header, *rows = it
+print('csv header :' , header)
+print('csv rows :', len(rows))
