@@ -20,6 +20,15 @@ header, *rows = it
 #print('csv rows :', len(rows))
 
 
+# Define the Tool class
+class Tool:
+    def __init__(self, name, weight):
+        self.name = name
+        self.weight = weight
+
+    def __repr__(self):
+        return f'Tool(name={self.name}, weight={self.weight})'
+
 # sort by complex criteria using the key parameter
 tools = [
     Tool('level', 3.5),
@@ -28,4 +37,23 @@ tools = [
     Tool('chisel', 0.25)
 ]
 
-print((tools.count))
+#print(('unsorted:', repr(tools)))
+tools.sort(key=lambda x: x.weight)
+#print('\n' + 'sorted by name:', tools)
+
+places = ['home', 'work', 'New York', 'Paris']
+places.sort()
+print('\n' + 'sorted by name:', places)
+places.sort(key=lambda x: x.lower())
+print('sorted by name ignoring case:', places)
+
+# using multiple criteria to sort a list of tuples
+power_tools = [
+    ('drill', 4),
+    ('circular saw', 5),        
+    ('jackhammer', 40),
+    ('sander', 4),
+]       
+
+power_tools.sort(key=lambda x: (x[1], x[0]))
+print('\n' + 'sorted by power:', power_tools)
