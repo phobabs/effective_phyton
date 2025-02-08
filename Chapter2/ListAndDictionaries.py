@@ -16,5 +16,14 @@ header, *rows = all_csv_rows[0], all_csv_rows[1:]
 
 it = list(generate_csv())
 header, *rows = it
-print('csv header :' , header)
-print('csv rows :', len(rows))
+#print('csv header :' , header)
+#print('csv rows :', len(rows))
+
+
+# sort by complex criteria using the key parameter
+tools = [
+    Tool('level', 3.5),
+    Tool('hammer', 1.25),
+    Tool('screwdriver', 0.5),
+    Tool('chisel', 0.25),
+]
