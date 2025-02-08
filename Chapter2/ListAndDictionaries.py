@@ -25,5 +25,7 @@ tools = [
     Tool('level', 3.5),
     Tool('hammer', 1.25),
     Tool('screwdriver', 0.5),
-    Tool('chisel', 0.25),
+    Tool('chisel', 0.25)
 ]
+
+print((tools.count))
