@@ -118,6 +118,19 @@ all_csv_rows = list(generate_csv())
 header, *rows = all_csv_rows[0], all_csv_rows[1:]
 print(all_csv_rows)
 #print('CSV Header:', header)
-#print('CSV Row:', rows)   
+#print('CSV Row:', rows)
+
+#item 14: Sort by Complex Criteria Using the key Parameter
+class Animal:
+    def __init__(self, name, weight):
+        self.name = name
+        self.weight = weight  # Assign the weight parameter to the instance variable
+
+    def __str__(self):
+        return f'{self.name} weighs {self.weight} kg'
+
+# Example usage
+elephant = Animal('Elephant', 1200)
+print(elephant)  # Output: Elephant weighs 1200 kg
 
 
