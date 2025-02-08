@@ -123,11 +123,11 @@ print(all_csv_rows)
 #item 14: Sort by Complex Criteria Using the key Parameter
 class Animal:
     def __init__(self, name, weight):
-        self.name = name
+        self.name = name  # Assign the name parameter to the instance variable
         self.weight = weight  # Assign the weight parameter to the instance variable
 
     def __str__(self):
-        return f'{self.name} weighs {self.weight} kg'
+        return f'{self.name} weighs {self.weight} kg'  # Return a string representation of the object
 
 # Example usage
 elephant = Animal('Elephant', 1200)
