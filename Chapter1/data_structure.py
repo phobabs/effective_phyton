@@ -44,9 +44,6 @@ print(loc1)
 print(f'Best at {loc1} is {best1}, {len(rest1)} others')
 print(f'Best at {loc2} is {best2}, {len(rest2)} others')
 
-    
-
-
 #I define a function to process this voting data and
 #save the rank of each animal name into a provided empty dictionary. In this case, the dictionary could be the data model that powers a UI element:
 def populate_ranks(votes, ranks):
@@ -120,7 +117,7 @@ print(all_csv_rows)
 #print('CSV Header:', header)
 #print('CSV Row:', rows)
 
-#item 14: Sort by Complex Criteria Using the key Parameter
+# Item 14: Sort by Complex Criteria Using the key Parameter
 class Animal:
     def __init__(self, name, weight):
         self.name = name  # Assign the name parameter to the instance variable
@@ -134,3 +131,68 @@ elephant = Animal('Elephant', 1200)
 print(elephant)  # Output: Elephant weighs 1200 kg
 
 
+drill = (4, 'drill')
+sander = (4, 'sander')
+assert drill[0] == sander[0]  # Same weight
+assert drill[1] < sander[1]   # Alphabetically less
+assert drill < sander         # Thus, drill comes first
+
+power_tools = [
+    (4, 'drill'),   # 4 kg          
+    (5, 'circular saw'),  # 5 kg
+    (40, 'jackhammer'),  # 40 kg
+    (4, 'sander'),  # 4 kg
+]
+
+power_tools.sort(key=lambda x: (x[1], x[0]))  # Sort by name first, then by weight
+print(power_tools)  # Output: [(5, 'circular saw'), (4, 'drill'), (40, 'jackhammer'), (4, 'sander')]
+# The power tools are sorted by name first and then by weight
+# The lambda function is used to specify the sorting criteria 
+
+power_tools.sort(key=lambda x: (-x[0], x[1]))  # Sort by weight in descending order, then by name
+print(power_tools)  # Output: [(40, 'jackhammer'), (5, 'circular saw'), (4, 'drill'), (4, 'sander')]
+# The power tools are sorted by weight in descending order and then by name in ascending order      
+
+# Item 15: Be Cautious When Relying on dict Insertion Ordering
+
+baby_names = {
+    'cat': 'kitten',
+    'dog': 'puppy',
+}
+
+print(baby_names)  # Output: {'cat': 'kitten', 'dog': 'puppy'}
+# The order of the dictionary items is preserved but for python 3.5 the order changes (it will be sorted by keys) 
+votes = {
+    'otter': 1281,              
+    'polar bear': 587,
+    'fox': 863,
+}                   
+
+print(votes)  # Output: {'otter': 1281, 'polar bear': 587, 'fox': 863}  # The order of the dictionary items is preserved
+
+# The populate_ranks function processes the voting data and saves the rank of each animal name into a provided empty dictionary 
+
+def populate_ranks(votes, ranks):
+    names = list(votes.keys())
+    names.sort(key=votes.get, reverse=True)
+    for i, name in enumerate(names, 1):
+        ranks[name] = i
+        return ranks
+
+ranks = {}
+populate_ranks(votes, ranks)
+print(ranks)  # Output: {'otter': 1}    # The otter is the only animal in the ranks dictionary
+
+# Item 16: Prefer get Over in and KeyError to Handle Missing Dictionary Keys
+counters = {             # A dictionary of animal names and their counts        
+    'otter': 1,
+    'polar bear': 2,
+    'fox': 3,
+}
+
+# The increment function increments the count of a given animal name in the counters
+def increment(counters, name):
+    try:
+        counters[name] += 1
+    except KeyError:
+        counters[name] = 1

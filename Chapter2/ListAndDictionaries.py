@@ -38,13 +38,13 @@ tools = [
 ]
 
 #print(('unsorted:', repr(tools)))
-tools.sort(key=lambda x: x.weight)
+tools.sort(key=lambda x: x.weight)  # Sort tools by weight
 #print('\n' + 'sorted by name:', tools)
 
 places = ['home', 'work', 'New York', 'Paris']
-places.sort()
+places.sort()  # Sort places alphabetically
 print('\n' + 'sorted by name:', places)
-places.sort(key=lambda x: x.lower())
+places.sort(key=lambda x: x.lower())  # Sort places alphabetically ignoring case
 print('sorted by name ignoring case:', places)
 
 # using multiple criteria to sort a list of tuples
@@ -55,5 +55,5 @@ power_tools = [
     ('sander', 4),
 ]       
 
-power_tools.sort(key=lambda x: (x[1], x[0]))
+power_tools.sort(key=lambda x: (x[1], x[0]))  # Sort by weight first, then by name
 print('\n' + 'sorted by power:', power_tools)
