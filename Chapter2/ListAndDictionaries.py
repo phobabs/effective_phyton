@@ -57,3 +57,33 @@ power_tools = [
 
 power_tools.sort(key=lambda x: (x[1], x[0]))  # Sort by weight first, then by name
 print('\n' + 'sorted by power:', power_tools)
+
+
+    # For example, say that I’m writing a program to show the results
+    # of a contest for the cutest baby animal. Here, 
+    # I start with a dictionary containing the total vote count for each one:
+votes = {
+    'otter': 1281,
+    'polar bear': 587,
+    'fox': 863, 
+    }
+# I define a function to process this voting data 
+# and save the rank of each animal name into a provided empty dictionary. 
+# The rank is the position of the animal in the sorted list of names.
+    
+def populate_ranks(votes, ranks):
+    names = list(votes.keys())
+    names.sort(key=votes.get, reverse=True)
+    for i, name in enumerate(names, 1):
+        ranks[name] = i
+        
+# I also need a function that will tell me which animal won the contest
+
+def get_winner(ranks):
+    return next(iter(ranks))
+
+ranks = {}
+populate_ranks(votes, ranks)
+print(ranks)
+winner = get_winner(ranks)
+print(winner)
