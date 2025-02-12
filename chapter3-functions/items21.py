@@ -19,7 +19,7 @@ def sort_priority(values, group):
     values.sort(key=helper)
     
 
-values = [8, 3, 1, 2, 5, 4, 7, 6]                       
+values = [8, 3, 1, 12, 5, 4, 7, 6]                       
 group = {2, 3, 5, 7}
 sort_priority(values, group)
 print(values)
