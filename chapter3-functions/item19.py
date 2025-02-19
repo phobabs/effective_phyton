@@ -21,22 +21,32 @@ longest, *middle, shortest = get_avg_ratio(lengths)
 # print(f'middle: {middle[-1]:>4.0%}')
 
 # Item 20: Prefer Raising Exceptions to Returning None
-def careful_divide(a: float, b: float) -> float:
-    """Divides a by b.
-    Raises:
-        ValueError: When the inputs cannot be divided.
-    """
+def careful_divide(a, b):   
     try:
         return a / b
     except ZeroDivisionError as e:
         raise ValueError('Invalid inputs') from e
-
-x, y = 5, 2
+x,y = 5, 2
 try:
-    result = careful_divide(x, y)
+    result = careful_divide(5, 2)
     print(result)
 except ValueError as e:
     print(e)
 
+# (using the underscore variable name, a Python convention for unused variables)
+# using annotations in your code is best practice
+# Now the inputs, outputs, and exceptional behavior 
+# is clear, and the chance of a caller doing the wrong thing is extremely low.
+# The function is also much easier to understand and maintain.
+def careful_divide(a: float, b: float) -> float:
+    """Divides a by b.
+    Raises:
+        ValueError: When the inputs cannot be divided.
+"""
+    try:
+        return a / b
+    except ZeroDivisionError as e:
+        raise ValueError('Invalid inputs')
+    
 
 
